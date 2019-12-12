@@ -6,9 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>跳转中...</title>
     <script>
-      var suffix = location.pathname + location.search
       var newUrl = "https://www.myshantou.net"
-      window.location.replace(newUrl + suffix)
+      var pathname = location.pathname
+      // rewrite /xx/post-a/ => /xx/post-a.html
+      if (pathname.length > 3 && /\/$/.test(pathname)) {
+        pathname = pathname.replace(/\/$/, '.html')
+      }
+      window.location.replace(newUrl + pathname + location.search)
     </script>
   </head>
   <body>
